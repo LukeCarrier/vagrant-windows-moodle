@@ -1,0 +1,7 @@
+# Developers may create a Vagrantfile for quick and easy testing in the current
+# directory -- we don't need this as it should appear in a parent directory
+/Vagrantfile
+/.vagrant/
+
+# Local cache of useful binaries for speedier installations after a destroy
+/cache/
