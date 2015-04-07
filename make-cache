@@ -23,6 +23,11 @@ SQL_SERVER_2008_R2_ADV_64="http://download.microsoft.com/download/0/4/B/04BE03CD
 # https://phpmanager.codeplex.com/releases/view/69115
 PHP_MANAGER_IIS_64="http://download-codeplex.sec.s-msft.com/Download/Release?ProjectName=phpmanager&DownloadId=253209&FileTime=129536821813970000&Build=20983"
 
+# PHP 5.5 NTS VC11 x86 build (currently 5.5.23)
+#
+# http://windows.php.net/download/
+PHP_55="http://windows.php.net/downloads/releases/php-5.5.23-nts-Win32-VC11-x86.zip"
+
 if [ ! -f "${CACHE_DIR}/SQLEXPRADV_x64_ENU.exe" ]; then
     curl --location --output "${CACHE_DIR}/SQLEXPRADV_x64_ENU.exe" \
          "$SQL_SERVER_2008_R2_ADV_64"
@@ -31,4 +36,8 @@ fi
 if [ ! -f "${CACHE_DIR}/PHPManagerForIIS-1.2.0-x64.msi" ]; then
     curl --location --output "${CACHE_DIR}/PHPManagerForIIS-1.2.0-x64.msi" \
          "$PHP_MANAGER_IIS_64"
+fi
+
+if [ ! -f "${CACHE_DIR}/php-55-nts-vc11-x86.zip" ]; then
+    curl --location --output "${CACHE_DIR}/php-55-nts-vc11-x86.zip" "$PHP_55"
 fi

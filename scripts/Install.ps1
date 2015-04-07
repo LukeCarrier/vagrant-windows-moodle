@@ -10,3 +10,7 @@ $ScriptDir = Split-Path $script:MyInvocation.MyCommand.Path
 
 # Install SQL Server Express 2008 R2
 Invoke-Expression -Command (Join-Path $ScriptDir "SqlServer2008R2.ps1")
+
+# Install IIS using Web Server role
+Invoke-Expression -Command (Join-Path $ScriptDir "InternetInformationServices.ps1")
+Invoke-Expression -Command (Join-Path $ScriptDir "InternetInformationServicesPhp.ps1")
