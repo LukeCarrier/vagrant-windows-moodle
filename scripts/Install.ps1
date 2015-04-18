@@ -8,6 +8,9 @@
 
 $ScriptDir = Split-Path $script:MyInvocation.MyCommand.Path
 
+# Activate Windows
+#Invoke-Expression -Command (Join-Path $ScriptDir "ActivateWindows.ps1")
+
 # Install SQL Server Express 2008 R2
 Invoke-Expression -Command (Join-Path $ScriptDir "SqlServer2008R2.ps1")
 
