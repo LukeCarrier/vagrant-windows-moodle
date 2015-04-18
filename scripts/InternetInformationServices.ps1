@@ -8,16 +8,19 @@
 
 Import-Module ServerManager
 
-echo "Adding Windows Server roles..."
-[String[]] $Roles = @(
-    "WAS",
-    "Web-Common-HTTP",
-    "Web-Health",
-    "Web-Mgmt-Console",
-    "Web-Mgmt-Tools",
-    "Web-Performance",
+[string[]] $Features = @(
+    "WAS"
+    "Web-WebServer"
+    "Web-Common-Http"
+    "Web-Health"
+    "Web-ISAPI-Ext"
+    "Web-ISAPI-Filter"
+    "Web-Performance"
     "Web-Security"
+    "Web-Mgmt-Console"
+    "Web-Mgmt-Service"
+    "Web-Scripting-Tools"
 )
-foreach ($Role in $Roles) {
-    Add-WindowsFeature $Role
-}
+
+echo "Installing IIS..."
+Add-WindowsFeature -Name $Features
