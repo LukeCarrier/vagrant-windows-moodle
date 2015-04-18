@@ -26,7 +26,7 @@ PHP_MANAGER_IIS_64="http://download-codeplex.sec.s-msft.com/Download/Release?Pro
 # PHP 5.5 NTS VC11 x86 build (currently 5.5.23)
 #
 # http://windows.php.net/download/
-PHP_55="http://windows.php.net/downloads/releases/php-5.5.23-nts-Win32-VC11-x86.zip"
+PHP_55="http://windows.php.net/downloads/releases/php-5.5.24-nts-Win32-VC11-x86.zip"
 
 if [ ! -f "${CACHE_DIR}/SQLEXPRADV_x64_ENU.exe" ]; then
     curl --location --output "${CACHE_DIR}/SQLEXPRADV_x64_ENU.exe" \
@@ -38,6 +38,6 @@ if [ ! -f "${CACHE_DIR}/PHPManagerForIIS-1.2.0-x64.msi" ]; then
          "$PHP_MANAGER_IIS_64"
 fi
 
-if [ ! -f "${CACHE_DIR}/php-55-nts-vc11-x86.zip" ]; then
-    curl --location --output "${CACHE_DIR}/php-55-nts-vc11-x86.zip" "$PHP_55"
+if [ ! -f "${CACHE_DIR}/php-5.5.24-nts-vc11-x86.zip" ]; then
+    curl --location --output "${CACHE_DIR}/php-5.5.24-nts-vc11-x86.zip" "$PHP_55"
 fi

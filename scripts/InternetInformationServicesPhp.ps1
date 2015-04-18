@@ -12,7 +12,7 @@ $CacheDir  = (Join-Path (Split-Path $ScriptDir) "cache")
 $PhpDir = "C:\PHP"
 $Php55Dir = (Join-Path $PhpDir "5.5")
 
-$Php55Zip = (Join-Path $CacheDir "php-55-nts-vc11-x86.zip")
+$Php55Zip = (Join-Path $CacheDir "php-5.5.24-nts-vc11-x86.zip")
 
 echo "Enabling CGI in IIS..."
 Add-WindowsFeature "Web-CGI"
