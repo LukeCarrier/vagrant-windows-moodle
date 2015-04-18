@@ -27,8 +27,6 @@ if (!(Test-Path $PhpDir)) {
 }
 
 echo "Installing PHP 5.5..."
-echo $Php55Zip
-echo $Php55Dir
 if (!(Test-Path $Php55Dir)) {
     New-Item "$Php55Dir" -Type Directory
 
