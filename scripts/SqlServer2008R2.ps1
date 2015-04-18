@@ -17,5 +17,5 @@ Add-WindowsFeature AS-NET-Framework
 echo "Installing SQL Server 2008 R2 SP2 - Express Edition..."
 $InstallerPath = (Join-Path $CacheDir "SQLEXPRADV_x64_ENU.exe")
 $ConfigurationFilePath = (Join-Path $ScriptDir "SqlServer2008R2ConfigurationFile.ini")
-&$InstallerPath /ACTION=install /ConfigurationFile=$ConfigurationFilePath `
-        | Out-Null
+Start-Process -Wait $InstallerPath `
+              -ArgumentList "/ACTION=install /ConfigurationFile=$ConfigurationFilePath"
