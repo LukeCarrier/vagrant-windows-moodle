@@ -23,4 +23,4 @@ Import-Module ServerManager
 )
 
 echo "Installing IIS..."
-Add-WindowsFeature -Name $Features
+Add-WindowsFeature -Name $Features | Out-Null
