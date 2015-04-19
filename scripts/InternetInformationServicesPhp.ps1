@@ -36,3 +36,7 @@ if (!(Test-Path $Php55Dir)) {
 
     $Destination.CopyHere($Archive.Items())
 }
+
+echo "Registering PHP 5.5 with IIS..."
+Add-PsSnapin PHPManagerSnapin
+New-PHPVersion -ScriptProcessor (Join-Path $Php55Dir "php-cgi.exe")
