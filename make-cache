@@ -21,7 +21,7 @@ SQL_SERVER_2008_R2_ADV_64="http://download.microsoft.com/download/0/4/B/04BE03CD
 # PHP Manager for IIS
 #
 # https://phpmanager.codeplex.com/releases/view/69115
-PHP_MANAGER_IIS_64="http://download-codeplex.sec.s-msft.com/Download/Release?ProjectName=phpmanager&DownloadId=253209&FileTime=129536821813970000&Build=20983"
+PHP_MANAGER_IIS_64="http://download-codeplex.sec.s-msft.com/Download/Release?ProjectName=phpmanager&DownloadId=253209&FileTime=129536821813970000&Build=20988"
 
 # PHP 5.5 NTS VC11 x86 build (currently 5.5.23)
 #
