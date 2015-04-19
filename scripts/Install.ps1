@@ -19,3 +19,6 @@ Invoke-Expression -Command (Join-Path $ScriptDir "InternetInformationServices.ps
 
 # PHP
 Invoke-Expression -Command (Join-Path $ScriptDir "InternetInformationServicesPhp.ps1")
+
+# Configure the site
+Invoke-Expression -Command (Join-Path $ScriptDir "VagrantSite.ps1")
