@@ -22,17 +22,6 @@ Import-Module ServerManager
     "Web-Scripting-Tools"
 )
 
-# Base paths
-$IisAppPoolPath = (Join-Path "IIS:" "AppPools")
-$IisWebSitePath = (Join-Path "IIS:" "Sites")
-
-# Defaults
-$DefaultAppPoolName         = "DefaultAppPool"
-$DefaultAppPoolPath         = (Join-Path $IisAppPoolPath $DefaultAppPoolName)
-$DefaultWebSiteName         = "Default Web Site"
-$DefaultWebSitePath         = (Join-Path $IisWebSitePath $DefaultWebSiteName)
-$DefaultWebSitePhysicalPath = (Join-Path (Join-Path "C:" "inetpub") "wwwroot")
-
 Write-Host "Installing IIS..."
 Add-WindowsFeature -Name $Features > $null
 
@@ -45,6 +34,20 @@ Add-WindowsFeature -Name $Features > $null
 Write-Host "Disabling incremental site ID generation..."
 Set-ItemProperty -Path HKLM:\Software\Microsoft\Inetmgr\Parameters `
                  -Name IncrementalSiteIDCreation -Value 0
+
+# Freshly installed!
+Import-Module WebAdministration
+
+# Base paths
+$IisAppPoolPath = (Join-Path "IIS:" "AppPools")
+$IisWebSitePath = (Join-Path "IIS:" "Sites")
+
+# Defaults
+$DefaultAppPoolName         = "DefaultAppPool"
+$DefaultAppPoolPath         = (Join-Path $IisAppPoolPath $DefaultAppPoolName)
+$DefaultWebSiteName         = "Default Web Site"
+$DefaultWebSitePath         = (Join-Path $IisWebSitePath $DefaultWebSiteName)
+$DefaultWebSitePhysicalPath = (Join-Path (Join-Path "C:" "inetpub") "wwwroot")
 
 # Delete the default junk
 Write-Host "Removing default pool and site (if present)..."
