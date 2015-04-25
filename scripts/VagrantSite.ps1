@@ -19,7 +19,7 @@ $IisWebSitePath = (Join-Path "IIS:" "Sites")
 # Configuration
 $AppPoolName         = "VagrantAppPool"
 $AppPoolPath         = (Join-Path $IisAppPoolPath $AppPoolName)
-$WebSitePhysicalPath = (Join-Path(Join-Path(Join-Path "C:" "vagrant") "distributions") "moodle")
+$WebSitePhysicalPath = (Join-Path(Join-Path "C:" "vagrant") "src")
 
 # Create the database
 
