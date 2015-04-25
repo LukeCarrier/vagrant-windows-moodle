@@ -13,7 +13,10 @@ for Moodle-specific images. Note that this is not a base box.
 2. Install [Vagrant](https://www.vagrantup.com/)
 3. Generate and install a base box image from the Windows box factory linked to
    above
-4. Clone this repository alongside the Moodle site you want to run. Note that
+4. To enable us to reboot the virtual machine during provisioning, install the
+   [Vagrant Reload Provisioner](https://github.com/aidanns/vagrant-reload)
+   plugin
+5. Clone this repository alongside the Moodle site you want to run. Note that
    both the Moodle source and data directories must be below the directory you
    clone this repository to. See the recommended configuration below
 
