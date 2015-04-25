@@ -33,8 +33,8 @@ $DefaultWebSiteName         = "Default Web Site"
 $DefaultWebSitePath         = (Join-Path $IisWebSitePath $DefaultWebSiteName)
 $DefaultWebSitePhysicalPath = (Join-Path (Join-Path "C:" "inetpub") "wwwroot")
 
-echo "Installing IIS..."
-Add-WindowsFeature -Name $Features | Out-Null
+Write-Host "Installing IIS..."
+Add-WindowsFeature -Name $Features > $null
 
 # Incremental site ID generation fails if no sites exist, so deleting the
 # default site will actually break the WebAdministration module. Disable
@@ -42,12 +42,12 @@ Add-WindowsFeature -Name $Features | Out-Null
 #
 # such enterprise. very money. wow.
 # http://forums.iis.net/post/1912421.aspx
-echo "Disabling incremental site ID generation..."
+Write-Host "Disabling incremental site ID generation..."
 Set-ItemProperty -Path HKLM:\Software\Microsoft\Inetmgr\Parameters `
                  -Name IncrementalSiteIDCreation -Value 0
 
 # Delete the default junk
-echo "Removing default pool and site (if present)..."
+Write-Host "Removing default pool and site (if present)..."
 if (Test-Path $DefaultAppPoolPath) {
     Remove-WebAppPool $DefaultAppPoolName
 }

@@ -14,21 +14,21 @@ $Php55Dir = (Join-Path $PhpDir "5.5")
 
 $Php55Zip = (Join-Path $CacheDir "php-5.5.24-nts-vc11-x86.zip")
 
-echo "Enabling CGI in IIS..."
+Write-Host "Enabling CGI in IIS..."
 Add-WindowsFeature "Web-CGI" | Out-Null
 
-echo "Installing PHP Manager for IIS..."
+Write-Host "Installing PHP Manager for IIS..."
 $Package = (Join-Path $CacheDir PHPManagerForIIS-1.2.0-x64.msi)
 Start-Process -Wait "msiexec" -ArgumentList "/i $Package /qn"
 
-echo "Creating common parent directory for PHP versions..."
+Write-Host "Creating common parent directory for PHP versions..."
 if (!(Test-Path $PhpDir)) {
-    New-Item "$PhpDir" -Type Directory | Out-Null
+    New-Item "$PhpDir" -Type Directory > $null
 }
 
-echo "Installing PHP 5.5..."
+Write-Host "Installing PHP 5.5..."
 if (!(Test-Path $Php55Dir)) {
-    New-Item "$Php55Dir" -Type Directory | Out-Null
+    New-Item "$Php55Dir" -Type Directory > $null
 
     $Shell       = New-Object -Com Shell.Application
     $Archive     = $Shell.Namespace($Php55Zip)
@@ -37,6 +37,6 @@ if (!(Test-Path $Php55Dir)) {
     $Destination.CopyHere($Archive.Items())
 }
 
-echo "Registering PHP 5.5 with IIS..."
-Add-PsSnapin PHPManagerSnapin
+Write-Host "Registering PHP 5.5 with IIS..."
+Add-PSSnapin PHPManagerSnapin
 New-PHPVersion -ScriptProcessor (Join-Path $Php55Dir "php-cgi.exe")

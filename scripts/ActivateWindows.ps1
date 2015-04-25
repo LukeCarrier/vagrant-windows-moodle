@@ -15,7 +15,7 @@
 # Datacenter   QX7TD-2CMJR-D7WWY-KVCYC-6D2YT
 $ProductKey = "4GGC4-9947F-FWFP3-78P6F-J9HDR"
 
-echo "Activating Windows..."
+Write-Host "Activating Windows..."
 $Service = Get-WmiObject -ComputerName $env:ComputerName `
                          -Query "SELECT * FROM SoftwareLicensingService"
 $Service.InstallProductKey($ProductKey)

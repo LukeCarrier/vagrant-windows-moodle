@@ -24,7 +24,7 @@ $WebSitePhysicalPath = (Join-Path(Join-Path(Join-Path "C:" "vagrant") "distribut
 # Create the database
 
 # Create the IIS application pool
-echo "Creating application pool..."
+Write-Host "Creating application pool..."
 if (!(Test-Path $AppPoolPath)) {
     New-WebAppPool $AppPoolName
 }
@@ -32,6 +32,6 @@ Set-ItemProperty -Path $AppPoolPath -Name managedRuntimeVersion ""
 Set-ItemProperty -Path $AppPoolPath -Name processModel.idleTimeout "00:00:00"
 
 # ... and site
-echo "Creating web site..."
+Write-Host "Creating web site..."
 New-Website "Vagrant" -Port 80 -PhysicalPath $WebSitePhysicalPath `
             -ApplicationPool $AppPoolName
