@@ -14,6 +14,8 @@ Param(
     [String] $VagrantScriptsDir
 )
 
+$ErrorActionPreference = "Stop"
+
 Invoke-Expression -Command (Join-Path $VagrantScriptsDir "Install.ps1")
 
 echo "Provisioning complete"
