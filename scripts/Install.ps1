@@ -6,10 +6,10 @@
 # @license GPL v3
 #
 
-$ScriptDir = Split-Path $script:MyInvocation.MyCommand.Path
-. (Join-Path $ScriptDir "Common.ps1")
+$TaskDir = Split-Path $script:MyInvocation.MyCommand.Path
+. (Join-Path $TaskDir "Common.ps1")
 
-[string[]] $Scripts = @(
+[string[]] $Tasks = @(
     # Must be first -- upgrades WMF/PS to fix double redirection bug
     "WindowsManagementFramework",
 
@@ -20,10 +20,11 @@ $ScriptDir = Split-Path $script:MyInvocation.MyCommand.Path
     "VagrantSite"
 )
 
-foreach ($Script in $Scripts) {
-    $ScriptPath = (Join-Path $ScriptDir "$Script.ps1")
+foreach ($Task in $Tasks) {
+    Write-Host "Running task $Task..."
+    $TaskPath = (Join-Path $TaskDir "$Task.ps1")
 
-    &$ScriptPath | Out-Host
+    &$TaskPath
 
     # Handle reboots.
     #
