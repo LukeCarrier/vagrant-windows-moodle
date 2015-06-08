@@ -7,9 +7,25 @@
 #
 
 Vagrant.configure(2) do |config|
-    config.vm.box = "LukeCarrier/windows-2008-r2-64"
+  config.vm.box = "LukeCarrier/windows-2008-r2-64"
 
-    config.vm.provision "shell",
-            path: File.join("vagrant-windows", "Install.ps1"),
-            args: ["C:\\vagrant\\src-vagrant-windows-moodle\\scripts"]
+  config.vm.network :private_network, ip: "<your guest ip>"
+
+  config.vm.synced_folder "testdata", "<your drive letter>:", type: "better_smb",
+                          better_smb_machine_ip: "<your guest ip>",
+                          better_smb_share_name: "<your share name>",
+                          better_smb_host_ip: "<your host ip>",
+                          better_smb_share_user: "<your username>",
+                          better_smb_share_password: "<your password>"
+
+  # Windows Management Framework 3.0
+  config.vm.provision :shell,
+      path: File.join("src-vagrant-windows-moodle", "Install.ps1"),
+      args: ["C:\\vagrant\\src-vagrant-windows-moodle\\scripts"]
+  config.vm.provision :reload
+
+  # Everything else
+  config.vm.provision :shell,
+      path: File.join("src-vagrant-windows-moodle", "Install.ps1"),
+      args: ["C:\\vagrant\\src-vagrant-windows-moodle\\scripts"]
 end
