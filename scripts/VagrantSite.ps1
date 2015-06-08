@@ -19,7 +19,7 @@ $IisWebSitePath = (Join-Path "IIS:" "Sites")
 # Configuration
 $AppPoolName         = "VagrantAppPool"
 $AppPoolPath         = (Join-Path $IisAppPoolPath $AppPoolName)
-$WebSitePhysicalPath = (Join-Path(Join-Path "C:" "vagrant") "src")
+$WebSitePhysicalPath = "\\10.0.2.2\lukecarrier-moodle-src"
 
 # Create the database
 
@@ -31,7 +31,7 @@ if (!(Test-Path $AppPoolPath)) {
 Set-ItemProperty -Path $AppPoolPath -Name managedRuntimeVersion ""
 Set-ItemProperty -Path $AppPoolPath -Name processModel.idleTimeout "00:00:00"
 
-# ... and site
+# ...and site
 Write-Host "Creating web site..."
 New-Website "Vagrant" -Port 80 -PhysicalPath $WebSitePhysicalPath `
             -ApplicationPool $AppPoolName
