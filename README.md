@@ -26,12 +26,10 @@ Structure your directories as follows:
 
     Moodle
     ├── data
-    │   └── moodle-master
-    ├── distributions
-    │   └── moodle
-    │   └── totaralms
+    │   └── master
+    ├── src
     ├── plugins
-    └── vagrant-windows
+    └── src-vagrant-windows-moodle
 
 Then just copy our ```Vagrantfile.dist``` to ```Vagrantfile``` in the
 ```Moodle``` directory.
