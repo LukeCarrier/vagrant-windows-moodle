@@ -61,30 +61,30 @@ cache = [
 download = []
 
 cache.each do |file_info|
-  puts "Checking #{file_info[:filename]}"
+  puts "Checking #{file_info[:name]}..."
 
   filename = File.join cache_dir, file_info[:filename]
 
   if !File.file? filename
-    puts "File #{file_info[:filename]} doesn't exist"
+    puts "\tFile #{file_info[:filename]} doesn't exist"
     download << file_info
     next
   end
 
   checksum = Digest::MD5.file(filename).hexdigest
   if checksum != file_info[:checksum]
-    puts "Checksum #{checksum} doesn't match expected #{file_info[:checksum]}"
+    puts "\tChecksum #{checksum} doesn't match expected #{file_info[:checksum]}"
     download << file_info
     next
   end
 
-  puts "Already cached"
+  puts "\tAlready cached"
 end
 
-puts "Downloading #{download.size} files"
+puts "Downloading #{download.size} files..."
 
 download.each do |file_info|
-  puts "Downloading #{file_info[:url]} to #{file_info[:filename]}"
+  puts "\tDownloading #{file_info[:url]} to #{file_info[:filename]}"
   filename = File.join cache_dir, file_info[:filename]
   file     = File.open filename, 'w+'
 
@@ -99,3 +99,5 @@ download.each do |file_info|
     end
   end
 end
+
+puts "\tDone"
