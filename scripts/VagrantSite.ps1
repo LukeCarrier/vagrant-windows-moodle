@@ -35,7 +35,7 @@ Set-ItemProperty -Path $AppPoolPath -Name processModel.idleTimeout "00:00:00"
 
 # ...and site
 Write-Host "Creating web site..."
-if (!(Test-Path $WebSitePhysicalPath)) {
+if (!(Test-Path $WebSitePath)) {
     New-Website $WebSiteName -Port 80 -PhysicalPath $WebSitePhysicalPath `
                 -ApplicationPool $AppPoolName
 }
