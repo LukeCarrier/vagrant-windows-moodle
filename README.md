@@ -41,4 +41,3 @@ Then just copy our ```Vagrantfile.dist``` to ```Vagrantfile``` in the
    ```Vagrantfile```
 2. Run ```vagrant up```. The first time will be fairly slow as we have to
    install SQL Server and IIS, but subsequent launches should be relatively fast
-   (as far as Windows goes... ;-))
