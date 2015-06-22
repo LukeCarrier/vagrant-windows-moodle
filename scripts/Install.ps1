@@ -13,10 +13,15 @@ $TaskDir = Split-Path $script:MyInvocation.MyCommand.Path
     # Must be first -- upgrades WMF/PS to fix double redirection bug
     "WindowsManagementFramework",
 
+    # Broken
     #"ActivateWindows",
+
+    # Then the dependencies
     "SqlServer2008R2",
     "InternetInformationServices",
     "InternetInformationServicesPhp",
+
+    # Install the Vagrant site
     "VagrantSite"
 )
 
