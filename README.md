@@ -37,7 +37,7 @@ Then just copy our ```Vagrantfile.dist``` to ```Vagrantfile``` in the
 
 ## Launching a VM
 
-1. ```cd``` to your Moodle directory which contains your shiny new
-   ```Vagrantfile```
+1. ```cd``` to your Moodle directory (you're looking for the one which contains
+   your shiny new ```Vagrantfile```
 2. Run ```vagrant up```. The first time will be fairly slow as we have to
    install SQL Server and IIS, but subsequent launches should be relatively fast
