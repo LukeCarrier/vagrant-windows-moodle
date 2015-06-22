@@ -24,6 +24,12 @@ Vagrant.configure(2) do |config|
       args: ["C:\\vagrant\\src-vagrant-windows-moodle\\scripts"]
   config.vm.provision :reload
 
+  # Visual C++ 11 for PHP
+  config.vm.provision :shell,
+      path: File.join("src-vagrant-windows-moodle", "Install.ps1"),
+      args: ["C:\\vagrant\\src-vagrant-windows-moodle\\scripts"]
+  config.vm.provision :reload
+
   # Everything else
   config.vm.provision :shell,
       path: File.join("src-vagrant-windows-moodle", "Install.ps1"),

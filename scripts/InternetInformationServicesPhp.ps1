@@ -26,6 +26,18 @@ if (!(Test-Path $PhpDir)) {
     New-Item "$PhpDir" -Type Directory > $null
 }
 
+[String[]] $Redistributables = @("x86", "x64")
+if (!(Test-Path "$env:WinDir\system32\msvcr110.dll")) {
+    foreach ($Architecture in $Redistributables) {
+        Write-Host "Installing Visual C++ 11 redistributable ($Architecture)..."
+        $InstallerPath = (Join-Path $CacheDir "vcredist_$Architecture.exe")
+        Start-Process -Wait $InstallerPath `
+                      -ArgumentList "/passive /norestart"
+    }
+
+    Exit $ERROR_SUCCESS_REBOOT_INITIATED
+}
+
 Write-Host "Installing PHP 5.5..."
 if (!(Test-Path $Php55Dir)) {
     New-Item "$Php55Dir" -Type Directory > $null

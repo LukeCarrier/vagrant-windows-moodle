@@ -22,6 +22,20 @@ cache = [
     url:      "http://download.microsoft.com/download/9/5/A/95A9616B-7A37-4AF6-BC36-D6EA96C8DAAE/dotNetFx40_Full_x86_x64.exe",
   },
   {
+    checksum: "3c03562b5af9ed347614053d459d7778",
+    details:  "http://www.microsoft.com/en-us/download/details.aspx?id=30679",
+    filename: "vcredist_x64.exe",
+    name:     "Visual C++ Redistributable for Visual Studio 2012 Update 4 (x64) ",
+    url:      "http://download.microsoft.com/download/1/6/B/16B06F60-3B20-4FF2-B699-5E9B7962F9AE/VSU_4/vcredist_x64.exe",
+  },
+  {
+    checksum: "7f52a19ecaf7db3c163dd164be3e592e",
+    details:  "http://www.microsoft.com/en-us/download/details.aspx?id=30679",
+    filename: "vcredist_x86.exe",
+    name:     "Visual C++ Redistributable for Visual Studio 2012 Update 4 (x86) ",
+    url:      "http://download.microsoft.com/download/1/6/B/16B06F60-3B20-4FF2-B699-5E9B7962F9AE/VSU_4/vcredist_x86.exe",
+  },
+  {
     checksum: "f0796f7930f4a4337e674d38bc2a6d98",
     details:  "http://windows.php.net/download/",
     filename: "php-5.5.24-nts-vc11-x86.zip",
