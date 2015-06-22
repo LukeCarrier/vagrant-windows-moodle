@@ -9,16 +9,16 @@
 Import-Module ServerManager
 
 [string[]] $Features = @(
-    "WAS"
-    "Web-WebServer"
-    "Web-Common-Http"
-    "Web-Health"
-    "Web-ISAPI-Ext"
-    "Web-ISAPI-Filter"
-    "Web-Performance"
-    "Web-Security"
-    "Web-Mgmt-Console"
-    "Web-Mgmt-Service"
+    "WAS",
+    "Web-WebServer",
+    "Web-Common-Http",
+    "Web-Health",
+    "Web-ISAPI-Ext",
+    "Web-ISAPI-Filter",
+    "Web-Performance",
+    "Web-Security",
+    "Web-Mgmt-Console",
+    "Web-Mgmt-Service",
     "Web-Scripting-Tools"
 )
 
