@@ -28,8 +28,6 @@ $WebSitePhysicalPath = "\\10.0.2.2\lukecarrier-moodle-src"
 Write-Host "Creating database Moodle..."
 [System.Reflection.Assembly]::LoadWithPartialName("Microsoft.SqlServer.SMO") | Out-Null
 $Server = New-Object Microsoft.SqlServer.Management.SMO.Server("(local)\SQLExpress")
-# $Server.ConnectionContext.set_Login("Vagrant")
-# $Server.ConnectionContext.set_SecurePassword("Vagrant")
 $Server.ConnectionContext.ApplicationName = "Vagrant"
 if (!($Server.Databases.Contains($DatabaseName))) {
     $Database = New-Object Microsoft.SqlServer.Management.SMO.Database($Server,
