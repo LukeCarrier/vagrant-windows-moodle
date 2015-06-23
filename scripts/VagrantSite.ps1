@@ -34,6 +34,16 @@ $Server.ConnectionContext.ApplicationName = "Vagrant"
 if (!($Server.Databases.Contains($DatabaseName))) {
     $Database = New-Object Microsoft.SqlServer.Management.SMO.Database($Server,
                                                                        $DatabaseName)
+
+    # All properties of this database are modelled after those recommended in
+    # the Moodle documentation:
+    #
+    # https://docs.moodle.org/27/en/Installing_MSSQL_for_PHP
+    $Database.AnsiNullsEnabled          = $true
+    $Database.Collation                 = "Latin1_General_CS_AS"
+    $Database.IsReadCommittedSnapshotOn = $true
+    $Database.QuotedIdentifiersEnabled  = $true
+
     $Database.Create()
 }
 
