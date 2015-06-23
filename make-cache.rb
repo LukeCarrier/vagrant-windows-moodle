@@ -43,6 +43,13 @@ cache = [
     url:      "http://windows.php.net/downloads/releases/php-5.5.24-nts-Win32-VC11-x86.zip",
   },
   {
+    checksum: "51decec51615a530fc4770e7a507629a",
+    details:  "http://download.moodle.org/download.php/dblib/php55_vc11_x86/DBLIB_NOTS.zip",
+    filename: "DBLIB_NOTS.zip",
+    name:     "FreeTDS VC11 NTS x86 0.91.89",
+    url:      "http://download.moodle.org/download.php/direct/dblib/php55_vc11_x86/DBLIB_NOTS.zip",
+  },
+  {
     checksum: "3b3fb0d8eb3d45a2a20097da614a9efc",
     details:  "https://phpmanager.codeplex.com/releases/view/69115",
     filename: "PHPManagerForIIS-1.2.0-x64.msi",

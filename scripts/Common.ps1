@@ -9,9 +9,18 @@
 # Exit statuses
 [int] $ERROR_SUCCESS_REBOOT_INITIATED = 1641
 
+# Extract the specified zip file to the specified target directory
+function Extract-ZipArchive($ArchiveFile, $TargetDirectory) {
+    $Shell   = New-Object -Com Shell.Application
+    $Archive = $Shell.Namespace($ArchiveFile)
+    $Target  = $Shell.Namespace($TargetDirectory)
+
+    $Target.CopyHere($Archive.Items())
+}
+
 # Does the specified value exist within the registry?
-function Test-RegistryValue($regkey, $name) {
-    $Exists = Get-ItemProperty -Path $regkey -Name $name `
+function Test-RegistryValue($RegistryKey, $ValueName) {
+    $Exists = Get-ItemProperty -Path $RegistryKey -Name $ValueName `
                                -ErrorAction SilentlyContinue
 
     if (($Exists -ne $null) -and ($Exists.Length -ne 0)) {
