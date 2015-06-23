@@ -26,8 +26,9 @@ if (!(Test-Path $PhpDir)) {
     New-Item "$PhpDir" -Type Directory > $null
 }
 
-[String[]] $Redistributables = @("x86", "x64")
 if (!(Test-Path "$env:WinDir\system32\msvcr110.dll")) {
+    [String[]] $Redistributables = @("x86", "x64")
+
     foreach ($Architecture in $Redistributables) {
         Write-Host "Installing Visual C++ 11 redistributable ($Architecture)..."
         $InstallerPath = (Join-Path $CacheDir "vcredist_$Architecture.exe")
