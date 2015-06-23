@@ -63,4 +63,7 @@ if (!(Test-Path $WebSitePath)) {
 
 # Tweak the file permissions so reads and writes work
 Write-Host "[Experimental] working on file permissions..."
-Start-Process -Wait "icacls" -ArgumentList "$RootPath /grant:r IUSR:F"
+Start-Process -Wait "icacls" -ArgumentList "$RootPath /inheritance:r"
+Start-Process -Wait "icacls" -ArgumentList "$RootPath /grant IUSR:(OI)(CI)(F)"
+Start-Process -Wait "icacls" -ArgumentList "$RootPath /grant IIS_IUSRS:(OI)(CI)(F)"
+Start-Process -Wait "attrib" -ArgumentList "-r +s $RootPath"
