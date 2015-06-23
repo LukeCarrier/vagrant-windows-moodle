@@ -22,7 +22,8 @@ $AppPoolName         = "VagrantAppPool"
 $AppPoolPath         = (Join-Path $IisAppPoolPath $AppPoolName)
 $WebSiteName         = "Vagrant"
 $WebSitePath         = (Join-Path $IisWebSitePath $WebSiteName)
-$WebSitePhysicalPath = "\\10.0.2.2\lukecarrier-moodle-src"
+$RootPath            = "\\10.0.2.2\lukecarrier-moodle"
+$WebSitePhysicalPath = (Join-Path $RootPath "src")
 
 # Create the database
 Write-Host "Creating database Moodle..."
@@ -59,3 +60,7 @@ if (!(Test-Path $WebSitePath)) {
     New-Website $WebSiteName -Port 80 -PhysicalPath $WebSitePhysicalPath `
                 -ApplicationPool $AppPoolName
 }
+
+# Tweak the file permissions so reads and writes work
+Write-Host "[Experimental] working on file permissions..."
+Start-Process -Wait "icacls" -ArgumentList "$RootPath /grant:r IUSR:F"
