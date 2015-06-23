@@ -19,7 +19,11 @@ a server capable of hosting Moodle.
 5. To enable us to reboot the virtual machine during provisioning, install the
    [Vagrant Reload Provisioner](https://github.com/aidanns/vagrant-reload)
    plugin
-6. Clone this repository alongside the Moodle site you want to run. Note that
+6. We'll need to be able to configure SMB shares on your host machine and mount
+   them on the guest. To allow us to do this, install my
+   [Vagrant Better SMB](https://github.com/LukeCarrier/vagrant-better-smb)
+   plugin
+7. Clone this repository alongside the Moodle site you want to run. Note that
    both the Moodle source and data directories must be below the directory you
    clone this repository to. See the recommended configuration below
 
@@ -35,7 +39,8 @@ Structure your directories as follows:
     └── src-vagrant-windows-moodle
 
 Then just copy our ```Vagrantfile.dist``` to ```Vagrantfile``` in the
-```Moodle``` directory.
+```Moodle``` directory and edit the shared folder configuration to suit your
+configuration.
 
 ## Launching a VM
 
