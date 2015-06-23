@@ -17,6 +17,7 @@ $IisAppPoolPath = (Join-Path "IIS:" "AppPools")
 $IisWebSitePath = (Join-Path "IIS:" "Sites")
 
 # Configuration
+$DatabaseName        = "Moodle"
 $AppPoolName         = "VagrantAppPool"
 $AppPoolPath         = (Join-Path $IisAppPoolPath $AppPoolName)
 $WebSiteName         = "Vagrant"
@@ -24,6 +25,17 @@ $WebSitePath         = (Join-Path $IisWebSitePath $WebSiteName)
 $WebSitePhysicalPath = "\\10.0.2.2\lukecarrier-moodle-src"
 
 # Create the database
+Write-Host "Creating database Moodle..."
+[System.Reflection.Assembly]::LoadWithPartialName("Microsoft.SqlServer.SMO") | Out-Null
+$Server = New-Object Microsoft.SqlServer.Management.SMO.Server("(local)\SQLExpress")
+# $Server.ConnectionContext.set_Login("Vagrant")
+# $Server.ConnectionContext.set_SecurePassword("Vagrant")
+$Server.ConnectionContext.ApplicationName = "Vagrant"
+if (!($Server.Databases.Contains($DatabaseName))) {
+    $Database = New-Object Microsoft.SqlServer.Management.SMO.Database($Server,
+                                                                       $DatabaseName)
+    $Database.Create()
+}
 
 # Create the IIS application pool
 Write-Host "Creating application pool..."
