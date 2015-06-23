@@ -1,8 +1,10 @@
 # Moodle on Windows Vagrant box
 
-A layer on top of my
+A (rather opinionated) layer on top of my
 [Vagrant Windows box factory](https://github.com/LukeCarrier/vagrant-windows)
-for Moodle-specific images. Note that this is not a base box.
+for Moodle-specific images. Note that this is not a base box, but rather a
+collection of configuration and automation scripts that convert a base box into
+a server capable of hosting Moodle.
 
 * * *
 
