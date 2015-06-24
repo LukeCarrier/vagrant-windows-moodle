@@ -23,6 +23,7 @@ $AppPoolPath         = (Join-Path $IisAppPoolPath $AppPoolName)
 $WebSiteName         = "Vagrant"
 $WebSitePath         = (Join-Path $IisWebSitePath $WebSiteName)
 $RootPath            = "\\10.0.2.2\lukecarrier-moodle"
+$DataPath            = (Join-Path $RootPath "data")
 $WebSitePhysicalPath = (Join-Path $RootPath "src")
 
 # Create the database
@@ -63,7 +64,6 @@ if (!(Test-Path $WebSitePath)) {
 
 # Tweak the file permissions so reads and writes work
 Write-Host "[Experimental] working on file permissions..."
-Start-Process -Wait "icacls" -ArgumentList "$RootPath /inheritance:r"
-Start-Process -Wait "icacls" -ArgumentList "$RootPath /grant IUSR:(OI)(CI)(F)"
-Start-Process -Wait "icacls" -ArgumentList "$RootPath /grant IIS_IUSRS:(OI)(CI)(F)"
-Start-Process -Wait "attrib" -ArgumentList "-r +s $RootPath"
+Start-Process -Wait "icacls" -ArgumentList "$RootPath /t /inheritance:r"
+Start-Process -Wait "icacls" -ArgumentList "$RootPath /t /grant IUSR:(OI)(CI)(F)"
+Start-Process -Wait "icacls" -ArgumentList "$RootPath /t /grant IIS_IUSRS:(OI)(CI)(F)"
