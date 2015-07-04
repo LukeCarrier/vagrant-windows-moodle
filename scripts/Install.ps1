@@ -11,18 +11,18 @@ $TaskDir = Split-Path $script:MyInvocation.MyCommand.Path
 
 [string[]] $Tasks = @(
     # Must be first -- upgrades WMF/PS to fix double redirection bug
-    "WindowsManagementFramework",
+    "WindowsManagementFramework"
 
-    # Broken
-    #"ActivateWindows",
+    # Do the activation dance
+    ,"ActivateWindows"
 
     # Then the dependencies
-    "SqlServer2008R2",
-    "InternetInformationServices",
-    "InternetInformationServicesPhp",
+    ,"SqlServer2008R2"
+    ,"InternetInformationServices"
+    ,"InternetInformationServicesPhp"
 
     # Install the Vagrant site
-    "VagrantSite"
+    ,"VagrantSite"
 )
 
 foreach ($Task in $Tasks) {
