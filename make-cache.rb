@@ -77,6 +77,13 @@ cache = [
     name:     "URL Rewrite Module 2.0 for IIS 7 (x64)",
     url:      "http://download.microsoft.com/download/6/7/D/67D80164-7DD0-48AF-86E3-DE7A182D6815/rewrite_2.0_rtw_x64.msi",
   },
+  {
+    checksum: "09664893917076e01d0fab27c82f7b80",
+    details:  "https://support.microsoft.com/en-us/kb/2277918",
+    filename: "417240_intl_x64_zip.exe",
+    name:     "REQUEST_URI UTF-8 encoding hotfix for IIS 7.5",
+    url:      "http://hotfixv4.microsoft.com/Windows%207/WindowsServer%202008%20R2/sp1/Fix325662/7600/free/417240_intl_x64_zip.exe",
+  },
 ]
 
 download = []

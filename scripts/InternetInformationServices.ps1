@@ -6,6 +6,9 @@
 # @license GPL v3
 #
 
+$ScriptDir = Split-Path $script:MyInvocation.MyCommand.Path
+$CacheDir  = (Join-Path (Split-Path $ScriptDir) "cache")
+
 Import-Module ServerManager
 
 [string[]] $Features = @(
@@ -57,3 +60,24 @@ if (Test-Path $DefaultAppPoolPath) {
 if (Test-Path $DefaultWebSitePath) {
     Remove-Website $DefaultWebSiteName
 }
+
+# Install the IIS 7.5 UTF-8/FastCGI hotfix
+
+# Because Microsoft are really good at releasing fixes to problems in their
+# hyper enterprisey platforms, we can't automate the extraction of the
+# self-extracting archive. Instead, we can extract the included update via the
+# shell then install that via WUSA.
+Write-Host "Installing IIS 7.5 UTF-8 FastCGI hotfix..."
+$TempDir               = (Join-Path "C:" "iis-fastcgi-utf8")
+$HotfixFilename        = "417240_intl_x64_zip.exe"
+$HotfixPath            = (Join-Path $CacheDir $HotfixFilename)
+$HotfixArchiveFilename = (Get-Item $HotfixPath).Basename + ".zip"
+$HotfixArchivePath     = (Join-Path $TempDir $HotfixArchiveFilename)
+$HotfixPackage         = (Join-Path $TempDir "Windows6.1-KB2277918-x64.msu")
+if (!(Test-Path $TempDir)) {
+    New-Item -Type Directory $TempDir | Out-Null
+}
+Copy-Item $HotfixPath $HotfixArchivePath
+Extract-ZipArchive $HotfixArchivePath $TempDir
+&wusa $HotfixPackage /quiet /norestart
+#Remove-Item -Recurse -Force $TempDir
