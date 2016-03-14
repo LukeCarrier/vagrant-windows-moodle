@@ -11,14 +11,14 @@ $CacheDir  = (Join-Path (Split-Path $ScriptDir) "cache")
 
 $PhpDir = "C:\PHP"
 
-$Php55IniSource           = (Join-Path $ScriptDir "InternetInformationServicesPhp.ini")
-$Php55Zip                 = (Join-Path $CacheDir "php-5.5.24-nts-vc11-x86.zip")
-$Php55ExtensionFreetdsZip = (Join-Path $CacheDir "DBLIB_NOTS.zip")
+$Php56IniSource           = (Join-Path $ScriptDir "InternetInformationServicesPhp.ini")
+$Php56Zip                 = (Join-Path $CacheDir "php-5.6.19-nts-vc11-x86.zip")
+$Php56ExtensionFreetdsZip = (Join-Path $CacheDir "DBLIB_NOTS.zip")
 
-$Php55Dir              = (Join-Path $PhpDir         "5.5")
-$Php55Ini              = (Join-Path $Php55Dir       "php.ini")
-$Php55Extension        = (Join-Path $Php55Dir       "ext")
-$Php55ExtensionFreetds = (Join-Path $Php55Extension "php_dblib.dll")
+$Php56Dir              = (Join-Path $PhpDir         "5.6")
+$Php56Ini              = (Join-Path $Php56Dir       "php.ini")
+$Php56Extension        = (Join-Path $Php56Dir       "ext")
+$Php56ExtensionFreetds = (Join-Path $Php56Extension "php_dblib.dll")
 
 Write-Host "Enabling CGI in IIS..."
 Add-WindowsFeature "Web-CGI" | Out-Null
@@ -45,21 +45,21 @@ if (!(Test-Path "$env:WinDir\system32\msvcr110.dll")) {
     Exit $ERROR_SUCCESS_REBOOT_INITIATED
 }
 
-Write-Host "Installing PHP 5.5..."
-if (!(Test-Path $Php55Dir)) {
-    New-Item "$Php55Dir" -Type Directory > $null
+Write-Host "Installing PHP 5.6..."
+if (!(Test-Path $Php56Dir)) {
+    New-Item "$Php56Dir" -Type Directory > $null
 
-    Extract-ZipArchive $Php55Zip $Php55Dir
+    Extract-ZipArchive $Php56Zip $Php56Dir
 }
 
 Write-Host "Installing FreeTDS..."
-if (!(Test-Path $Php55ExtensionFreetds)) {
-    Extract-ZipArchive $Php55ExtensionFreetdsZip $Php55Extension
+if (!(Test-Path $Php56ExtensionFreetds)) {
+    Extract-ZipArchive $Php56ExtensionFreetdsZip $Php56Extension
 }
 
 Write-Host "Installing customised php.ini..."
-Copy-Item $Php55IniSource $Php55Ini
+Copy-Item $Php56IniSource $Php56Ini
 
-Write-Host "Registering PHP 5.5 with IIS..."
+Write-Host "Registering PHP 5.6 with IIS..."
 Add-PSSnapin PHPManagerSnapin
-New-PHPVersion -ScriptProcessor (Join-Path $Php55Dir "php-cgi.exe")
+New-PHPVersion -ScriptProcessor (Join-Path $Php56Dir "php-cgi.exe")

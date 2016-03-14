@@ -36,11 +36,11 @@ cache = [
     url:      "http://download.microsoft.com/download/1/6/B/16B06F60-3B20-4FF2-B699-5E9B7962F9AE/VSU_4/vcredist_x86.exe",
   },
   {
-    checksum: "f0796f7930f4a4337e674d38bc2a6d98",
+    checksum: "d99dba38edb02165dc82de0840371718",
     details:  "http://windows.php.net/download/",
-    filename: "php-5.5.24-nts-vc11-x86.zip",
-    name:     "PHP 5.5.24 NTS VC11 x86 build",
-    url:      "http://windows.php.net/downloads/releases/php-5.5.24-nts-Win32-VC11-x86.zip",
+    filename: "php-5.6.19-nts-Win32-VC11-x86.zip",
+    name:     "PHP 5.6.19 NTS VC11 x86 build",
+    url:      "http://windows.php.net/downloads/releases/php-5.6.19-nts-Win32-VC11-x86.zip",
   },
   {
     checksum: "51decec51615a530fc4770e7a507629a",
