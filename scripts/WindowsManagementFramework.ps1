@@ -16,10 +16,13 @@ if (!(Test-RegistryValue "HKLM:\Software\Microsoft\NET Framework Setup\NDP\v4\Cl
     Start-Process -Wait -FilePath $DotNetPackagePath -ArgumentList /q, /norestart >$null
 }
 
-$WmfPackagePath = (Join-Path $CacheDir "Windows6.1-KB2506143-x64.msu")
+$WmfPackage = (Join-Path $CacheDir "Windows6.1-KB2506143-x64.msu")
+$TempWmfPackage = [System.IO.Path]::GetTempFileName()
 if ($PSVersionTable.PSVersion.Major -lt 3) {
     Write-Host "Installing Windows Management Framework 3.0..."
-    &wusa $WmfPackagePath /quiet /norestart | Out-Null
+    Copy-Item $WmfPackage $TempWmfPackage
+    &wusa $TempWmfPackage /quiet /norestart >$null
+    Remove-Item -Force $TempWmfPackage
 
     Exit $ERROR_SUCCESS_REBOOT_INITIATED
 }

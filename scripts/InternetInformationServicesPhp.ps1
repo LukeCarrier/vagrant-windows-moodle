@@ -23,9 +23,14 @@ $Php56ExtensionFreetds = (Join-Path $Php56Extension "php_dblib.dll")
 Write-Host "Enabling CGI in IIS..."
 Add-WindowsFeature "Web-CGI" | Out-Null
 
+# Install PHP Manager, but copy the installation media to the local drive first
+# as the package will fail to install otherwise. I don't know why this works.
 Write-Host "Installing PHP Manager for IIS..."
-$Package = (Join-Path $CacheDir PHPManagerForIIS-1.2.0-x64.msi)
-Start-Process -Wait "msiexec" -ArgumentList "/i $Package /qn"
+$Package = (Join-Path $CacheDir "PHPManagerForIIS-1.2.0-x64.msi")
+$TempPackage = [System.IO.Path]::GetTempFileName()
+Copy-Item $Package $TempPackage
+Start-Process -Wait "msiexec" -ArgumentList "/i $TempPackage /qn"
+Remove-Item -Force $TempPackage
 
 Write-Host "Creating common parent directory for PHP versions..."
 if (!(Test-Path $PhpDir)) {
@@ -47,7 +52,6 @@ if (!(Test-Path "$env:WinDir\system32\msvcr110.dll")) {
 
 Write-Host "Installing PHP 5.6..."
 if (!(Test-Path $Php56Dir)) {
-    Write-Host $Php56Zip $Php56Dir
     Extract-ZipArchive $Php56Zip $Php56Dir
 }
 
