@@ -107,7 +107,7 @@ puts "Downloading #{download.size} files..."
 download.each do |file_info|
   puts "\tDownloading #{file_info[:url]} to #{file_info[:filename]}"
   filename = File.join cache_dir, file_info[:filename]
-  file     = File.open filename, 'w+'
+  file     = File.open filename, 'wb'
 
   uri = URI.parse file_info[:url]
   Net::HTTP.start uri.host, uri.port do |http|
