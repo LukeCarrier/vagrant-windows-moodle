@@ -47,8 +47,7 @@ if (!(Test-Path "$env:WinDir\system32\msvcr110.dll")) {
 
 Write-Host "Installing PHP 5.6..."
 if (!(Test-Path $Php56Dir)) {
-    New-Item "$Php56Dir" -Type Directory > $null
-
+    Write-Host $Php56Zip $Php56Dir
     Extract-ZipArchive $Php56Zip $Php56Dir
 }
 
