@@ -1,0 +1,12 @@
+root = true
+
+[*]
+charset = utf-8
+
+[*.{md,ps1}]
+indent_style = space
+indent_size = 4
+
+[{*.rb,Vagrantfile.dist}]
+indent_style = space
+indent_size = 2
