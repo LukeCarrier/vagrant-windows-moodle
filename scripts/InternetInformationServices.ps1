@@ -23,7 +23,7 @@ Import-Module ServerManager
 )
 
 Write-Host "Installing IIS..."
-Add-WindowsFeature -Name $Features > $null
+Add-WindowsFeature -Name $Features >$null
 
 # Incremental site ID generation fails if no sites exist, so deleting the
 # default site will actually break the WebAdministration module. Disable

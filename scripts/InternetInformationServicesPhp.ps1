@@ -21,7 +21,7 @@ $Php56Extension        = (Join-Path $Php56Dir       "ext")
 $Php56ExtensionFreetds = (Join-Path $Php56Extension "php_dblib.dll")
 
 Write-Host "Enabling CGI in IIS..."
-Add-WindowsFeature "Web-CGI" | Out-Null
+Add-WindowsFeature "Web-CGI" >$null
 
 # Install PHP Manager, but copy the installation media to the local drive first
 # as the package will fail to install otherwise. I don't know why this works.
@@ -34,7 +34,7 @@ Remove-Item -Force $TempPackage
 
 Write-Host "Creating common parent directory for PHP versions..."
 if (!(Test-Path $PhpDir)) {
-    New-Item "$PhpDir" -Type Directory > $null
+    New-Item "$PhpDir" -Type Directory >$null
 }
 
 if (!(Test-Path "$env:WinDir\system32\msvcr110.dll")) {
