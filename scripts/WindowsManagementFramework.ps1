@@ -13,7 +13,7 @@ $CacheDir  = (Join-Path (Split-Path -Parent $ScriptDir) "cache")
 $DotNetPackagePath = (Join-Path $CacheDir "dotNetFx40_Full_x86_x64.exe")
 if (!(Test-RegistryValue "HKLM:\Software\Microsoft\NET Framework Setup\NDP\v4\Client" "Install")) {
     Write-Host "Installing .NET Framework 4.0..."
-    &$DotNetPackagePath /q /norestart | Out-Null
+    Start-Process -Wait -FilePath $DotNetPackagePath -ArgumentList /q, /norestart >$null
 }
 
 $WmfPackagePath = (Join-Path $CacheDir "Windows6.1-KB2506143-x64.msu")
