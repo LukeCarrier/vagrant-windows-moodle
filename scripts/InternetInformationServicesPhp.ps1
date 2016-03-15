@@ -12,7 +12,7 @@ $CacheDir  = (Join-Path (Split-Path $ScriptDir) "cache")
 $PhpDir = "C:\PHP"
 
 $Php56IniSource           = (Join-Path $ScriptDir "InternetInformationServicesPhp.ini")
-$Php56Zip                 = (Join-Path $CacheDir "php-5.6.19-nts-vc11-x86.zip")
+$Php56Zip                 = (Join-Path $CacheDir "php-5.6.19-nts-Win32-VC11-x86.zip")
 $Php56ExtensionFreetdsZip = (Join-Path $CacheDir "DBLIB_NOTS.zip")
 
 $Php56Dir              = (Join-Path $PhpDir         "5.6")
